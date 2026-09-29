@@ -1,0 +1,189 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, "Noto Sans TC", "PingFang TC", sans-serif;
+  color: #2f3934;
+  background-color: #f7f7f3;
+  line-height: 1.7;
+}
+
+/* Hero Section */
+.hero {
+  min-height: 78vh;
+  background-image: linear-gradient(rgba(25, 42, 38, 0.28), rgba(25, 42, 38, 0.48)), url("images/hero.jpeg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+}
+
+.hero-content {
+  width: 88%;
+  max-width: 1100px;
+  margin: 0 auto;
+  color: white;
+}
+
+.eyebrow,
+.section-en {
+  font-size: 13px;
+  letter-spacing: 3px;
+  font-weight: bold;
+}
+
+.hero h1 {
+  max-width: 760px;
+  margin: 12px 0 18px;
+  font-size: 68px;
+  line-height: 1.2;
+}
+
+.hero-text {
+  margin-bottom: 28px;
+  font-size: 17px;
+}
+
+.hero-button {
+  display: inline-block;
+  padding: 12px 22px;
+  background-color: white;
+  color: #354a41;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+/* 景點區 */
+.container {
+  width: 88%;
+  max-width: 1050px;
+  margin: 0 auto;
+  padding: 70px 0 85px;
+}
+
+.section-en {
+  margin: 0;
+  color: #809187;
+}
+
+h2 {
+  margin: 6px 0 8px;
+  font-size: 38px;
+}
+
+.intro {
+  max-width: 700px;
+  margin: 0 0 35px;
+  color: #69736d;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+.card {
+  background-color: white;
+  border: 1px solid #e1e5e2;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* 4張照片全部使用完全相同的固定框 */
+.image-frame {
+  width: 100%;
+  height: 260px;
+  overflow: hidden;
+  background-color: #e9ece9;
+}
+
+.image-frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: opacity 0.3s ease;
+}
+
+.image-frame img:hover {
+  opacity: 0.65;
+}
+
+.card-content {
+  padding: 20px 22px 24px;
+}
+
+.card-number {
+  margin: 0;
+  color: #718d80;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.card h3 {
+  margin: 4px 0 8px;
+  font-size: 24px;
+}
+
+.card-lead {
+  margin: 0 0 8px;
+  color: #53615a;
+}
+
+.address {
+  margin: 0 0 15px;
+  color: #78817c;
+  font-size: 14px;
+}
+
+details {
+  padding-top: 14px;
+  border-top: 1px solid #e1e5e2;
+}
+
+summary {
+  cursor: pointer;
+  color: #3f6253;
+  font-weight: bold;
+}
+
+details p {
+  margin-bottom: 0;
+  color: #56625c;
+}
+
+footer {
+  padding: 26px 20px;
+  background-color: #2e3934;
+  color: white;
+  text-align: center;
+  font-size: 14px;
+}
+
+/* 手機版 */
+@media (max-width: 760px) {
+  .hero {
+    min-height: 68vh;
+  }
+
+  .hero h1 {
+    font-size: 43px;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .image-frame {
+    height: 235px;
+  }
+}
