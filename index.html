@@ -8,6 +8,7 @@
 </head>
 <body>
   <header class="hero">
+    <a class="hero-button storymap-link" href="https://uploads.knightlab.com/storymapjs/3818884c1198da30aaf04002be730501/tai-zhong-sheng-tai-yi-ri-you/draft.html" id="open-storymap" aria-haspopup="dialog">生態一日遊 StoryMap ↗</a>
     <div class="hero-content">
       <p class="eyebrow">TAICHUNG · TAIWAN</p>
       <h1>慢遊臺中，<br>收藏城市的四種風景</h1>
@@ -98,5 +99,61 @@
 
 
   <footer>臺中慢遊｜用自己的步調，發現城市風景</footer>
+
+  <!-- 生態一日遊 StoryMap 彈出視窗 -->
+  <div class="storymap-modal" id="storymap-modal" role="dialog" aria-modal="true" aria-label="臺中生態一日遊 StoryMap" hidden>
+    <div class="storymap-backdrop" id="storymap-backdrop"></div>
+    <div class="storymap-panel">
+      <div class="storymap-header">
+        <h2>臺中生態一日遊 StoryMap</h2>
+        <button type="button" class="storymap-close" id="close-storymap" aria-label="關閉 StoryMap">✕ 關閉</button>
+      </div>
+      <iframe
+        id="storymap-frame"
+        title="臺中生態一日遊 StoryMap"
+        data-src="https://uploads.knightlab.com/storymapjs/3818884c1198da30aaf04002be730501/tai-zhong-sheng-tai-yi-ri-you/draft.html"
+        width="100%"
+        height="800"
+        frameborder="0"
+        allowfullscreen></iframe>
+    </div>
+  </div>
+  <script>
+    (() => {
+      const openLink = document.getElementById('open-storymap');
+      const modal = document.getElementById('storymap-modal');
+      const closeButton = document.getElementById('close-storymap');
+      const backdrop = document.getElementById('storymap-backdrop');
+      const frame = document.getElementById('storymap-frame');
+      let previousFocus = null;
+
+      function openModal(event) {
+        event.preventDefault();
+        previousFocus = document.activeElement;
+        if (!frame.src) frame.src = frame.dataset.src;
+        modal.hidden = false;
+        document.body.classList.add('storymap-open');
+        closeButton.focus();
+      }
+
+      function closeModal() {
+        modal.hidden = true;
+        document.body.classList.remove('storymap-open');
+        if (previousFocus) previousFocus.focus();
+      }
+
+      openLink.addEventListener('click', openModal);
+      closeButton.addEventListener('click', closeModal);
+      backdrop.addEventListener('click', closeModal);
+      document.addEventListener('keydown', (event) => {
+        if (modal.hidden) return;
+        if (event.key === 'Escape') closeModal();
+        if (event.key === 'Tab' && document.activeElement === closeButton && event.shiftKey) {
+          event.preventDefault();
+          closeButton.focus();
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
